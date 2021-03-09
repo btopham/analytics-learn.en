@@ -20,6 +20,9 @@ INITIAL NOTES:
 
 * The items below are going to assume that you are using [!DNL Experience Platform Launch] to implement on your site. The considerations would still exist if you are not using [!DNL Experience Platform Launch], but you would need to adapt them to your implementation method.
 * All SPAs are different, so you may need to tweak some of the following items to best meet your need, but we wanted to share some best practices with you; things that you need to think about as you are implementing Adobe Analytics on SPA pages.
+* ActivityMap will work on a SPA page: when s.t() or s.tl() are used but pageName does *not* change.
+* Where ActivityMap won't work on a SPA page: when s.t() or s.tl() are used pageName changes.
+* * During the first 10 seconds on a page, ActivityMap tries to find tags fired on the page and associate each tag's pageName to the report suite. ActivityMap does not continually poll the DOM or runtime environment for new values of pageName that are associated with each report suite previously found. So, it doesn't have a list of all the pageNames used per report suite on that page over the lifetime. This is why a change in pageName is not supported.
 
 ## Simple diagram of working with SPAs in [!DNL Experience Platform Launch] {#simple-diagram-of-working-with-spas-in-launch}
 
